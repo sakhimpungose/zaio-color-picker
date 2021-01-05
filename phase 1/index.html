@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("images/bg.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 1.4rem;
+
+        }
+
+        .page {
+            min-height: 100% !important;
+        }
+
+        .color-picker-body,
+        .purchased-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .color-box,
+        .purchased-item-box {
+            width: 34px;
+            height: 34px;
+        }
+
+        .color-item,
+        .purchased-item {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin: 5px;
+            border-radius: 12px;
+        }
+
+        .color-item.active:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            bottom: -5px;
+            left: -5px;
+            border-radius: 17px;
+            border: 2px solid gray;
+        }
+
+        .quantity-control-button {
+            width: 64px;
+            height: 64px;
+            position: relative;
+
+            border-radius: 32px;
+            display: inline;
+            border: none;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+
+        }
+
+        .quantity-control-button:focus {
+            outline: none;
+        }
+
+        .quantity-control-minus-button {
+            background-image: url("images/minus-sign.svg");
+        }
+
+        .quantity-control-plus-button {
+            background-image: url("images/plus-sign.svg");
+        }
+
+        .quantity-control-widget {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #quantity-control-item-name-display {
+            margin-right: 8px;
+        }
+
+        #quantity-control-value-display {
+            margin: 0 16px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .page-title {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 2.5rem;
+        }
+
+        .price-display {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.5rem;
+            color: #d05567;
+        }
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="page container bg-white w-75">
+        <h1 class="page-title pt-3">HICKIES Originals</h1>
+        <div class="row py-3">
+            <div class="col-6">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="col-6">
+                <span class="text-muted small">1,293 reviews</span>
+            </div>
+        </div>
+        <div class="row justify-content-start pb-3">
+            <div class="col-3">
+                <span class="price-display">$14.00</span>
+            </div>
+            <div class="col-3">
+                <span class="text-muted">$17.99</span>
+            </div>
+            <div class="col-3">
+                <span class="text-muted">15% Sale</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container py-2">
+                ONLINE EXCLUSIVE
+            </div>
+
+        </div>
+        <div class="color-picker py-3">
+            <div class="color-picker-header">
+                <h2 class="color-picker-title">COLOR: <span></span></h2>
+            </div>
+            <div class="color-picker-body">
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Blue" data-color-value="#0d6efd"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Indigo" data-color-value="#6610f2"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Purple" data-color-value="#6f42c1"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Pink" data-color-value="#d63384"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Red" data-color-value="#dc3545"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Orange" data-color-value="#fd7e14"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Yellow" data-color-value="#ffc107"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Teal" data-color-value="#20c997"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Cyan" data-color-value="#0dcaf0"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Gray" data-color-value="#6c757d"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Gray Dark" data-color-value="#343a40"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Success" data-color-value="#198754"></div>
+                </div>
+                <div class="color-box">
+                    <div class="color-item" data-color-name="Dark" data-color-value="#212529"></div>
+                </div>   
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <h5>Size guide</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <h5>Your custom fit</h5>
+            </div>
+        </div>
+        <div class="row border-bottom border-dark justify-content-start pb-3">
+            <div class="col-2">
+                <input type="text" id="checkout-quantity-value" class="form-control form-control-lg display-inline-block rounded-pill" value="0" readonly>
+            </div>
+            <div class="col-8">
+                <input type="button" id="checkout-button" class="btn btn-dark form-control btn-lg rounded-pill"
+                    value="Add to Cart" data-bs-toggle="modal" data-bs-target="#quantity-control-modal" disabled="disabled">
+            </div>
+
+        </div>
+        <div class="row border-bottom border-dark pb-3">
+            <div class="container">
+                <h2>Details</h2>
+                <div class="purchased-items"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="#" class="text-dark">Need Help?</a>
+            </div>
+            <div class="col-12">
+                <a href="#" class="text-dark">Shipping & Returns</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="quantity-control-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        tabindex="-1" aria-labelledby="quantity-control-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="quantity-control-modal-label">Please add the quantity of the item you
+                        have selected</h5>
+                </div>
+                <div class="modal-body border-0">
+                    <form>
+                        <input type="hidden" value="0" id="quantity-control-hidden-value">
+                        <div class="quantity-control-widget">
+                            <span id="quantity-control-item-name-display"></span>
+                            <button type="button" id="quantity-control-minus-button"
+                                class="quantity-control-button quantity-control-minus-button"></button>
+                            <span id="quantity-control-value-display">0</span>
+                            <button type="button" id="quantity-control-plus-button"
+                                class="quantity-control-button quantity-control-plus-button"></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" id="confirm-quantity-button" class="btn btn-success">Agree</button>
+                    <button type="button" id="cancel-quantity-button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const selectedColor = {
+            name: '',
+            value: '',
+            quantity: 0,
+            change: 0,
+        };
+
+        const colorPickerTitle = document.querySelector('.color-picker-title > span');
+
+        const modal = new bootstrap.Modal(document.getElementById('quantity-control-modal'), {backdrop: 'static'});
+
+        const quantityControlHidden = document.getElementById("quantity-control-hidden-value");
+        const quantityControlValueDisplay = document.getElementById("quantity-control-value-display");
+        const quantityControlItemNameDisplay = document.getElementById("quantity-control-item-name-display");
+        const cancelQuantityButton = document.getElementById("cancel-quantity-button");
+        const purchasedItems = document.querySelector('.purchased-items');
+
+        const checkoutQuantity = document.getElementById("checkout-quantity-value");
+
+        const quantityControlMinusButton = document.getElementById("quantity-control-minus-button");
+        const quantityControlPlusButton = document.getElementById("quantity-control-plus-button");
+        const checkoutButton = document.getElementById("checkout-button");
+        const confirmQuantityButton = document.getElementById('confirm-quantity-button');
+
+
+        /* HELP functions */
+
+        // Deselects the currently selected color item
+        const deselectAllSelectedColors = function () {
+            document.querySelectorAll(".color-item.active").forEach(function (item) {
+                item.classList.remove("active");
+            });
+        };
+
+        // Clears the selected color object to it default state
+        const clearSelectedColorObj = function(){
+            Object.assign(selectedColor, {
+                name: '',
+                value: '',
+                quantity: 0,
+                change: 0,
+            });            
+        };
+
+        // updates the color picker title which responsible for showing the current selected color name
+        const updateColorPickerTitle = function(value = ''){
+            colorPickerTitle.innerHTML = value;
+        };
+
+        // Selecting and looping through all color items
+        document.querySelectorAll(".color-item").forEach(function (item) {
+
+            /* Set background color for each color item to the corresponding data-color-value attribute */
+            item.style.backgroundColor = item.getAttribute("data-color-value");
+
+            item.addEventListener("click", function (evt) {
+                if (evt.target.classList.contains("active")) {
+                    clearSelectedColorObj(); // reset selected color obj
+                    checkoutQuantity.value = selectedColor.quantity; // update checkout quantity to zero
+                    checkoutButton.disabled  = true; // disable checkout button
+                    updateColorPickerTitle(); // clear color picker title
+
+                    evt.target.classList.remove("active"); // deselected the currently selected color
+                } else {
+                    deselectAllSelectedColors(); // deselected previously selected color
+
+                    evt.target.classList.add("active"); // select currently selected color
+
+                    let colorName = evt.target.getAttribute("data-color-name"); // get color name
+                    let colorValue = evt.target.getAttribute("data-color-value"); // get color value
+
+
+                    // update selected color object
+                    Object.assign(selectedColor, {
+                        name: colorName,
+                        value: colorValue,
+                        quantity: 0,
+                        change: 0,
+                    });
+
+                    
+                    checkoutButton.disabled  = false; // enable checkout button because there is a selected color
+                    checkoutQuantity.value = selectedColor.quantity; // update checkout quantity to zero
+
+                    // Change color picker title
+                    updateColorPickerTitle(selectedColor.name);
+
+                    // Config modal
+                    configModal();
+                }
+
+                removeAllPurchasedItems();
+                checkoutButton.value = "Add to Cart"; // ensure that checkout button says "Add to Cart"
+            }, false);
+        });
+
+        quantityControlMinusButton.addEventListener("click", function(evt){
+            if (selectedColor.quantity + selectedColor.change == 0) return; // if change will lead to a negative value, stop
+
+            Object.assign(selectedColor, {
+                change: selectedColor.change - 1, // record change
+            });
+
+            updateModal(); // update modal with recent changes
+        }, false);
+
+        quantityControlPlusButton.addEventListener("click", function(evt){
+            Object.assign(selectedColor, {
+                change: selectedColor.change + 1, // record change
+            });
+
+            updateModal(); // update modal with recent changes
+        }, false);
+
+        // updates modal with selected color object values
+        const updateModal = function(){
+            quantityControlHidden.value = selectedColor.quantity + selectedColor.change;
+            quantityControlValueDisplay.innerHTML = selectedColor.quantity + selectedColor.change;
+        };
+
+        // used to config modal after a new color is selected
+        const configModal = function(){
+            updateModal();
+            quantityControlItemNameDisplay.innerHTML = selectedColor.name; // update item name on the modal
+        };
+
+        confirmQuantityButton.addEventListener("click", function(){
+            Object.assign(selectedColor, {
+                quantity: selectedColor.quantity + selectedColor.change,
+                change: 0,
+            });
+
+            checkoutQuantity.value = selectedColor.quantity;
+            createPurchasedItems(selectedColor.quantity)
+            modal.hide();
+        }, false);
+
+        const removeAllPurchasedItems = function(){
+            while(purchasedItems.firstChild){
+                purchasedItems.removeChild(purchasedItems.firstChild);
+            }
+        };
+
+        const createPurchasedItems = function(n){
+            if(parseInt(n, 10) > 0){
+                checkoutButton.value = "Checkout Now";
+            }
+
+            removeAllPurchasedItems();
+
+            for(let i = 0; i < parseInt(n, 10); i++){
+                let box = document.createElement('div');
+                box.classList.add("purchased-item");
+
+                let item = document.createElement('div');
+                item.classList.add('purchased-item');
+                item.style.backgroundColor = selectedColor.value;
+
+                box.appendChild(item);
+                purchasedItems.appendChild(box);
+            }
+        };
+
+        cancelQuantityButton.addEventListener("click", function(){
+            Object.assign(selectedColor, {
+                change: 0,
+            });
+            checkoutQuantity.value = selectedColor.quantity;   
+            updateModal();        
+        }, false);
+
+    </script>
+</body>
+
+</html>
